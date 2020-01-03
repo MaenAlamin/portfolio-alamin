@@ -45,7 +45,7 @@ class Index extends React.Component {
 
     return (
       <BaseLayout>
-        <h1>This is the Index Page from Class Component</h1>
+        <h1>This is the Index Page from Class Component, and was updated</h1>
         <h2>{this.state.title}</h2>
         <h2>{userData.title}</h2>
         <button onClick={() => this.updateTitle()}>Change the title</button>
