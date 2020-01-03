@@ -6,15 +6,8 @@ import "../../styles/main.scss";
 
 class Header extends React.Component {
   render() {
-    const title = this.props.title;
-
     return (
       <React.Fragment>
-        <p>{title}</p>
-        {this.props.children}
-        <p className="customStyle">I am a Styled p Element</p>
-        <p className="customStyleFromFile">I am a Styled p Element</p>
-
         <Link href="/">
           <a>Home</a>
         </Link>
