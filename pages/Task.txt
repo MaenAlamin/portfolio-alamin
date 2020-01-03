@@ -1,0 +1,4 @@
+_________Create New Pages_________
+1. Create "Portfolio", "Blogs", "CV" pages.
+2. Make all of the Pages class component.
+3. Return Simple text "This is the Blogs Page ...".
