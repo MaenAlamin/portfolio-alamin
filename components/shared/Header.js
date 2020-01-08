@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavbarText } from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
+import auth0 from "../../services/auth0";
 
 const BsNavLink = props => {
   const { route, title } = props;
@@ -12,10 +13,28 @@ const BsNavLink = props => {
   );
 };
 
-const Example = props => {
+const Login = () => {
+  return (
+    <span onClick={auth0.login} className="nav-link port-navbar-link clickable">
+      Login
+    </span>
+  );
+};
+
+const Logout = () => {
+  return (
+    <span onClick={auth0.logout} className="nav-link port-navbar-link clickable">
+      Logout
+    </span>
+  );
+};
+
+const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const { isAuthenticated } = props;
 
   return (
     <div>
@@ -25,7 +44,7 @@ const Example = props => {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem className="port-navbar-item">
               <BsNavLink route="/" title="Home" />
             </NavItem>
@@ -41,12 +60,21 @@ const Example = props => {
             <NavItem className="port-navbar-item">
               <BsNavLink route="/cv" title="CV" />
             </NavItem>
+            {!isAuthenticated && (
+              <NavItem className="port-navbar-item">
+                <Login />
+              </NavItem>
+            )}
+            {isAuthenticated && (
+              <NavItem className="port-navbar-item">
+                <Logout />
+              </NavItem>
+            )}
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>
   );
 };
 
-export default Example;
+export default Header;
